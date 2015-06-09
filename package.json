@@ -1,0 +1,29 @@
+{
+  "name": "hart-codingchallenge",
+  "version": "0.0.1",
+  "description": "This code is written for a coding challenge for Node developers whom wish to work at Hart.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hart, Peter A. Tariche",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.9.0",
+    "bcrypt": "^0.8.1",
+    "body-parser": "^1.12.0",
+    "compression": "^1.4.1",
+    "connect-mongo": "^0.7.0",
+    "cookie-parser": "^1.3.4",
+    "crypto": "0.0.3",
+    "express": "^4.11.2",
+    "express-session": "^1.10.2",
+    "instagram-node": "^0.5.6",
+    "lodash": "^3.2.0",
+    "method-override": "^2.3.1",
+    "mongoose": "^3.8.23",
+    "passport": "^0.2.1",
+    "passport-soundcloud": "^0.1.2",
+    "soundcloud-node": "0.0.10"
+  }
+}
