@@ -59,12 +59,15 @@ app.use(function(req, res, next) {
   next();
 });
 
-
+// get protocol
 app.get('/', function(req, res, next){
   res.json({Welcome: 'Soundcloud middle-layer API'});
 });
 app.get('/following', passportSettings.isAuthenticated, apiController.following);
 app.get('/favorites', passportSettings.isAuthenticated, apiController.favorites);
+app.get('/topfive', passportSettings.isAuthenticated, apiController.topfive);
+app.get('/downloadable', passportSettings.isAuthenticated, apiController.download);
+// get protocol for authentication
 app.get('/auth/soundcloud', passport.authenticate('soundcloud'));
 app.get('/auth/soundcloud/callback', passport.authenticate('soundcloud', { failureRedirect: '/error' }), function(req, res) {
   res.json({
@@ -74,6 +77,9 @@ app.get('/auth/soundcloud/callback', passport.authenticate('soundcloud', { failu
   });
 });
 
+// put protocol
+app.put('/follow', passportSettings.isAuthenticated, apiController.follow);
+app.put('/like', passportSettings.isAuthenticated, apiController.like);
 
 app.listen(1337);
 

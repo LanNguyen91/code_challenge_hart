@@ -2,7 +2,7 @@ var _                  = require('lodash');
 var passport           = require('passport');
 var soundcloudStrategy = require('passport-soundcloud').Strategy;
 var secrets            = require('./secrets');
-var User               = require('../models/User');
+var User               = require('../models/user');
 
 exports.isAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -37,7 +37,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new soundcloudStrategy(secrets.soundcloud ,function(req, accessToken, refreshToken, profile, done) {
   if (req.user) {
     User.findOne({ soundcloud: profile.id }, function(err, existingUser) {
-      if (existingUser) {
+      if (!existingUser) {
         done(err);
       } else {
         User.findById(req.user.id, function(err, user) {
@@ -49,7 +49,8 @@ passport.use(new soundcloudStrategy(secrets.soundcloud ,function(req, accessToke
         });
       }
     });
-  } else {
+  } 
+  else {
     User.findOne({ soundcloud: profile.id }, function(err, existingUser) {
       if (existingUser) return done(null, existingUser);
       var user = new User();
